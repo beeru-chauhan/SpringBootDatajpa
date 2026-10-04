@@ -1,5 +1,8 @@
 package com.beeru.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +49,36 @@ public class VaccineService implements IVaccineService {
 		
 		return repo.findAllById(ids);
 	}
-
+	@Override
+	public Optional<Vaccine> fetchVaccineById(Integer id) {
+	 return repo.findById(id);
+	 
+	}
+	@Override
+	public String removeVaccineById(Integer id) {
+//	Optional<Vaccine> optional = repo.findById(id);
+//	if(optional.isPresent())
+//	{
+//		repo.deleteById(id);
+//		return "the vaccine with id :"+id+"id deleted";
+//	}
+		boolean status = repo.existsById(id);
+		if(status)
+		{
+			repo.deleteById(id);
+			return "the vaccine with id :"+id+"id deleted";
+		}
+		return "the vaccine with id :"+id+" is not available in the database";
+	}
+	@Override
+	public String removeVaccineByIds(List<Integer> ids) {
+		
+		return null;
+	}
+	@Override
+	public String removeVaccineByObj(Vaccine obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
 }

@@ -63,7 +63,10 @@ public class Vaccine {
 		this.cost = cost;
 	}
 
-	
+	public Vaccine()
+	{
+		
+	}
 	
 	
 
