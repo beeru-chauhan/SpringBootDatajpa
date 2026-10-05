@@ -72,8 +72,16 @@ public class VaccineService implements IVaccineService {
 	}
 	@Override
 	public String removeVaccineByIds(List<Integer> ids) {
+		List<Vaccine> vaccines = (List<Vaccine>)repo.findAllById(ids);
+		int dbcount = vaccines.size();
 		
-		return null;
+		int clintCount = ids.size();
+		if(clintCount==dbcount)
+		{
+			repo.deleteAllById(ids);
+			return "vaccine info is deleted from records for the given ids";
+		}
+		return "failed to delete vaccine info for given ids";
 	}
 	@Override
 	public String removeVaccineByObj(Vaccine obj) {

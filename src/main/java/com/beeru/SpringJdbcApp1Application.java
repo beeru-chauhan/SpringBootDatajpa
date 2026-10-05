@@ -27,24 +27,27 @@ public class SpringJdbcApp1Application {
 //		vaccines.add(new Vaccine("Jassen","Johnson",1000.0));
 //		vaccines.add(new Vaccine("Sputnik","Russian",44444.5));
 //		service.registerMultipleVaccine(vaccines).forEach(v->System.out.println(v));
-		long count=service.count();
-		System.out.println("the total number of vaccine saved in the database is :"+count);
-		
-		int id=203;
-		boolean status1=service.checkAvailability(4);
-		if(status1)
-			System.out.println("the vaccine is available in the database");
-		else
-			System.out.println("the vaccine is not available");
-		List <Integer>ids= Arrays.asList(1,2,3);
-		service.fetchVaccineInfo().forEach(v->System.out.println(v));
-service.fetchVaccineBasedOnIds(ids).forEach(v1->System.out.println(v1));
-
-Optional<Vaccine> optional = service.fetchVaccineById(id);
-if(optional.isPresent())
-	System.out.println(optional.get());
-else
-	System.out.println("no vaccine available with id :"+id);
+//		long count=service.count();
+//		System.out.println("the total number of vaccine saved in the database is :"+count);
+//		
+//		int id=203;
+//		boolean status1=service.checkAvailability(4);
+//		if(status1)
+//			System.out.println("the vaccine is available in the database");
+//		else
+//			System.out.println("the vaccine is not available");
+//		List <Integer>ids= Arrays.asList(1,2,3);
+//		service.fetchVaccineInfo().forEach(v->System.out.println(v));
+//service.fetchVaccineBasedOnIds(ids).forEach(v1->System.out.println(v1));
+//
+//Optional<Vaccine> optional = service.fetchVaccineById(id);
+//if(optional.isPresent())
+//	System.out.println(optional.get());
+//else
+//	System.out.println("no vaccine available with id :"+id);
+		List<Integer>ids=Arrays.asList(202,203,204,205,206);
+		String status = service.removeVaccineByIds(ids);
+		System.out.println(status);
 	}
 
 }
